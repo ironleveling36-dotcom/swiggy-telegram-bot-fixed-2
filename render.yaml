@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: swiggy-telegram-bot
+    runtime: python
+    plan: free
+    startCommand: python bot_fixed.py
+    envVars:
+      - key: TELEGRAM_TOKEN
+        sync: false
+      - key: ADMIN_IDS
+        sync: false

@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  bot:
+    build: .
+    container_name: swiggy-telegram-bot
+    environment:
+      - TELEGRAM_TOKEN=${TELEGRAM_TOKEN}
+      - ADMIN_IDS=${ADMIN_IDS}
+      - FIREBASE_URL=${FIREBASE_URL}
+    volumes:
+      - ./config.json:/app/config.json
+      - ./bot.log:/app/bot.log
+    restart: unless-stopped
+    networks:
+      - bot-network
+
+networks:
+  bot-network:
+    driver: bridge
